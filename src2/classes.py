@@ -6,3 +6,5 @@ class Point:
 p = Point(3, 5)
 print(p.x)
 print(p.y)
+
+# 01-09-20 Added as a test of GIT jdc
