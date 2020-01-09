@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block forehead %}
+        <title>My Website!</title>
+        {% endblock forehead %}
+    </head>
+    <body>
+        <h1>{% block heading %}Garbage{% endblock %}</h1>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
