@@ -14,7 +14,7 @@ def main():
         db.execute("INSERT INTO flights (origin, destination, duration) VALUES (:origin, :destination, :duration)",
                     {"origin": origin, "destination": destination, "duration": duration})
         print(f"Added flight from {origin} to {destination} lasting {duration} minutes.")
-    db.commit()
+    db.commit() # SQLALCHEMY AUTOMATICALLY ASSUMES GROUPED UPDATE & INSERT COMMANDS, SO MUST COMMIT.
 
 if __name__ == "__main__":
     main()
