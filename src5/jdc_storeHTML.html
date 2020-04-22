@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Store chunks of html?</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            //if local storage exists, add it to list
+            if (localStorage.getItem('thelist')) {
+                document.getElementById('memory_alpha').innerHTML = localStorage.getItem('thelist')
+                localStorage.removeItem('thelist')
+            } else {
+                document.getElementById('memory_alpha').innerHTML = "no"
+                const bogus_list = document.createElement('ul')
+                const bogus_item = document.createElement('li')
+                bogus_item.innerHTML="Something"
+                bogus_list.append(bogus_item)
+                bogus_item.innerHTML="Something Else"
+                bogus_list.append(bogus_item)
+                localStorage.setItem('thelist', bogus_list.innerHTML)
+            }
+            //if not, add "no" to list and then store stuff to local storage
+        })
+    </script>
+</head>
+
+<body>
+    <ul id='memory_alpha'></ul>
+
+</body>
+</html>

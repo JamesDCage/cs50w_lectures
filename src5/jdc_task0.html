@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>My Task Effort</title>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                document.querySelector('#new-task').onsubmit = () => {
+                    const listentry = document.createElement('li');
+                    listentry.innerHTML = document.querySelector('#task').value;
+                    document.querySelector('#task-list').append(listentry);
+                    return false;
+
+                }
+            })
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <h1>Tasks</h1>
+
+        <ul id='task-list'>
+        </ul>
+
+        <form id='new-task'>
+            <input type='text' id='task'>
+            <input type='submit'>
+
+        </form>
+
+    </body>
+    
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Get the element that should change color
+                greeting = document.querySelector('#hello');
+
+                // Find all buttons. Assign an onclick script to each
+                document.querySelectorAll('.bubba').forEach( 
+                    function(button) {
+                    button.onclick = function() {greeting.style.color = button.dataset.color;
+                    };
+                    }    
+                );
+                
+
+
+            });
+        </script>
+        <title>My Website</title>
+    </head>
+    <body>
+        <h1 id='hello'>Hello!</h1>
+        <button class='bubba' data-color=red>Red</button>
+        <button class='bubba' data-color=blue>Blue</button>
+        <button class='bubba' data-color=green>Green</button>
+        <button class='bubba' data-color=black>Black</button>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>How Much Do I Remember</title>
+    <script>
+        //listen for the doc to be loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Look for stored tasks & display if exist
+            if (localStorage.getItem('old_list')) {
+                document.getElementById('task_list').innerHTML = localStorage.getItem('old_list')
+            }
+            
+            // look for on-submit event
+            document.getElementById('new_task').onsubmit = () => {
+                // create a new list entry and store the new task in it.
+                const list_entry = document.createElement('li');
+                list_entry.innerHTML = document.getElementById('the_task').value;
+
+                //append the new task to the list
+                document.querySelector('#task_list').append(list_entry);
+
+                // clear entry in form
+                document.getElementById('the_task').value = ""
+
+                // Store event list in local storage
+                localStorage.setItem('old_list', document.querySelector('#task_list').innerHTML)
+
+                // prevent page from being reloaded
+                // note this doesn't work wth an event listener                
+                return false;
+            }
+
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Tasks</h1>
+    <ul id='task_list'></ul>
+    <form id='new_task'>
+        <input id='the_task' type='text' required>
+        <input type='submit'>
+    </form>
+
+
+</body>
+
+</html>
