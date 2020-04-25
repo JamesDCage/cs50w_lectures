@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Connect to websocket
+    // Socket javascript library linked in index.html
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
     // When connected, configure buttons
     socket.on('connect', () => {
 
         // Each button should emit a "submit vote" event
+        // This event will be received by application.py
         document.querySelectorAll('button').forEach(button => {
             button.onclick = () => {
                 const selection = button.dataset.vote;
@@ -15,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // When a new vote is announced, add to the unordered list
+    // When a new vote is announced (by application.py), 
+    // add to the unordered list
     socket.on('announce vote', data => {
         const li = document.createElement('li');
         li.innerHTML = `Vote recorded: ${data.selection}`;
